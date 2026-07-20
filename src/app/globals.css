@@ -10,6 +10,7 @@
   --color-charcoal: #22201d;
   --color-charcoal-muted: #6b655d;
   --color-border: #e8dfd3;
+  --color-error: #ba1a1a;
 }
 
 @theme inline {
@@ -22,6 +23,7 @@
   --color-charcoal: var(--color-charcoal);
   --color-charcoal-muted: var(--color-charcoal-muted);
   --color-border: var(--color-border);
+  --color-error: var(--color-error);
 
   --font-heading: var(--font-fraunces);
   --font-body: var(--font-inter);
@@ -79,4 +81,41 @@ body {
 
 .recipe-carousel::-webkit-scrollbar {
   display: none;
+}
+
+.streaming-dot {
+  animation: dot-pulse 1.4s infinite linear;
+}
+
+.streaming-dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.streaming-dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes dot-pulse {
+  0%,
+  100% {
+    opacity: 0.2;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-2px);
+  }
+}
+
+.chat-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.chat-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.chat-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 10px;
 }
