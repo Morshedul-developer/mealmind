@@ -1,12 +1,27 @@
-const exploreLinks = ["AI Tools", "Our Story", "Community", "Premium Access"];
-const supportLinks = ["Cooking Guides", "FAQ", "API Reference", "Contact Us"];
+import Link from "next/link";
+
+const exploreLinks = [
+  { label: "AI Tools", href: "/ai-generator" },
+  { label: "Our Story", href: "/about" },
+  { label: "Community", href: "#" },
+  { label: "Premium Access", href: "#" },
+];
+
+const supportLinks = [
+  { label: "Cooking Guides", href: "#" },
+  { label: "FAQ", href: "#" },
+  { label: "API Reference", href: "#" },
+  { label: "Contact Us", href: "/contact" },
+];
 
 export function Footer() {
   return (
     <footer className="bg-cream-alt border-t border-border w-full mt-16">
       <div className="grid grid-cols-1 md:grid-cols-4 gap-8 px-6 py-16 max-w-7xl mx-auto">
         <div className="flex flex-col gap-4">
-          <div className="font-heading text-title text-primary">MealMind AI</div>
+          <Link href="/" className="font-heading text-title text-primary w-fit">
+            MealMind AI
+          </Link>
           <p className="text-caption text-charcoal-muted max-w-xs">
             Elevating the everyday kitchen experience through culinary artificial
             intelligence and editorial design.
@@ -28,27 +43,47 @@ export function Footer() {
         </div>
         <div className="flex flex-col gap-2">
           <h4 className="text-label text-charcoal uppercase mb-1">Explore</h4>
-          {exploreLinks.map((link) => (
-            <a
-              key={link}
-              href="#"
-              className="text-charcoal-muted hover:text-primary transition-colors text-caption"
-            >
-              {link}
-            </a>
-          ))}
+          {exploreLinks.map((link) =>
+            link.href === "#" ? (
+              <a
+                key={link.label}
+                href={link.href}
+                className="text-charcoal-muted hover:text-primary transition-colors text-caption"
+              >
+                {link.label}
+              </a>
+            ) : (
+              <Link
+                key={link.label}
+                href={link.href}
+                className="text-charcoal-muted hover:text-primary transition-colors text-caption"
+              >
+                {link.label}
+              </Link>
+            )
+          )}
         </div>
         <div className="flex flex-col gap-2">
           <h4 className="text-label text-charcoal uppercase mb-1">Support</h4>
-          {supportLinks.map((link) => (
-            <a
-              key={link}
-              href="#"
-              className="text-charcoal-muted hover:text-primary transition-colors text-caption"
-            >
-              {link}
-            </a>
-          ))}
+          {supportLinks.map((link) =>
+            link.href === "#" ? (
+              <a
+                key={link.label}
+                href={link.href}
+                className="text-charcoal-muted hover:text-primary transition-colors text-caption"
+              >
+                {link.label}
+              </a>
+            ) : (
+              <Link
+                key={link.label}
+                href={link.href}
+                className="text-charcoal-muted hover:text-primary transition-colors text-caption"
+              >
+                {link.label}
+              </Link>
+            )
+          )}
         </div>
         <div className="flex flex-col gap-2">
           <h4 className="text-label text-charcoal uppercase mb-1">

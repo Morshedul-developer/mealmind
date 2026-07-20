@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const chips = [
   { icon: "restaurant", label: "Heirloom Tomato", bg: "bg-secondary-light text-secondary", delay: "0s" },
   { icon: "eco", label: "Fresh Basil", bg: "bg-cream-alt text-charcoal", delay: "1.2s" },
@@ -20,12 +22,18 @@ export function Hero() {
             preferences, and dietary needs.
           </p>
           <div className="flex flex-wrap gap-4">
-            <button className="bg-primary text-white px-8 py-4 rounded-full text-label font-semibold hover:bg-primary-hover transition-all active:scale-95">
+            <Link
+              href="/ai-generator"
+              className="bg-primary text-white px-8 py-4 rounded-full text-label font-semibold hover:bg-primary-hover transition-all active:scale-95"
+            >
               Generate a Recipe
-            </button>
-            <button className="border-2 border-border text-primary px-8 py-4 rounded-full text-label font-semibold hover:bg-cream-alt transition-all active:scale-95">
+            </Link>
+            <Link
+              href="/explore"
+              className="border-2 border-border text-primary px-8 py-4 rounded-full text-label font-semibold hover:bg-cream-alt transition-all active:scale-95"
+            >
               Explore Recipes
-            </button>
+            </Link>
           </div>
         </div>
         <div className="relative hidden md:flex h-full items-center justify-center">
