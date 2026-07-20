@@ -1,32 +1,30 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
+import Link from "next/link";
 import type { Recipe } from "@/types/recipe";
-
-const dietLabels: Record<Recipe["dietType"], string> = {
-  vegan: "Vegan",
-  vegetarian: "Vegetarian",
-  keto: "Keto",
-  paleo: "Paleo",
-  "gluten-free": "Gluten-Free",
-  "dairy-free": "Dairy-Free",
-  none: "No Restrictions",
-};
+import { getDietLabel } from "@/lib/recipe-labels";
 
 export function RecipeCard({ recipe }: { recipe: Recipe }) {
   const [isFavorited, setIsFavorited] = useState(false);
 
   return (
     <article className="bg-white rounded-xl shadow-[0px_4px_20px_rgba(34,32,29,0.06)] transition-transform duration-300 hover:-translate-y-2 flex flex-col overflow-hidden">
-      <div className="relative aspect-4/3 w-full overflow-hidden">
-        <Image
-          src={recipe.imageUrl}
-          alt={recipe.title}
-          fill
-          sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
-          className="object-cover"
-        />
+      <div className="relative aspect-4/3 w-full overflow-hidden bg-cream-alt">
+        {recipe.imageUrl ? (
+          // Recipe photos are arbitrary user-supplied URLs and can't go
+          // through next/image's remotePatterns allowlist.
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={recipe.imageUrl}
+            alt={recipe.title}
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+        ) : (
+          <div className="flex h-full w-full items-center justify-center text-charcoal-muted">
+            <span className="material-symbols-outlined text-[32px]">image</span>
+          </div>
+        )}
       </div>
       <div className="p-6 flex flex-col grow">
         <div className="flex justify-between items-start mb-1 gap-2">
@@ -45,7 +43,7 @@ export function RecipeCard({ recipe }: { recipe: Recipe }) {
         </div>
         <div className="flex gap-2 mb-4">
           <span className="bg-secondary-light text-secondary text-caption px-2 py-0.5 rounded-full font-medium">
-            {dietLabels[recipe.dietType]}
+            {getDietLabel(recipe.dietType)}
           </span>
           <span className="bg-cream-alt text-charcoal-muted text-caption px-2 py-0.5 rounded-full font-medium">
             {recipe.prepTimeMinutes} min
@@ -63,12 +61,15 @@ export function RecipeCard({ recipe }: { recipe: Recipe }) {
               {recipe.ratingAverage.toFixed(1)}
             </span>
           </div>
-          <button className="text-primary text-label font-semibold flex items-center hover:gap-1 transition-all">
+          <Link
+            href={`/recipes/${recipe._id}`}
+            className="text-primary text-label font-semibold flex items-center hover:gap-1 transition-all"
+          >
             View
             <span className="material-symbols-outlined text-[18px]">
               chevron_right
             </span>
-          </button>
+          </Link>
         </div>
       </div>
     </article>

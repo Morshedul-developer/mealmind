@@ -8,6 +8,7 @@ export type CuisineType =
   | "french"
   | "mediterranean"
   | "american"
+  | "bengali"
   | "other";
 
 export type DietType =
@@ -31,6 +32,8 @@ export interface Recipe {
   cuisineType: CuisineType;
   dietType: DietType;
   prepTimeMinutes: number;
+  servings?: number;
+  calories?: number;
   difficulty: Difficulty;
   imageUrl: string;
   images: string[];
