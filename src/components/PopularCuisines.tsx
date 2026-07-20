@@ -1,15 +1,17 @@
 import Image from "next/image";
+import Link from "next/link";
 
 const cuisines = [
   {
     name: "Italian",
+    cuisineType: "italian",
     tagline: "Al dente dreams",
     alt: "A top-down editorial food photograph of a rustic Italian pasta dish with fresh basil leaves, bright red cherry tomatoes, and olive oil glistening under warm natural lighting.",
-    imageUrl:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuCMw1mm9nxsVx5N68b5mu1jQ-onNO5SOwXmaNaW2FS_gpmqZ2uUVlgbEpkyVV0gbEuPElBT73yaNP40F_g_A-czEJ922iMYQTtb3TZFIHlN9fGmYMaFJ40JvnWVfJO2UCFaAD9vyUf_mSzBEwfmAwwVYAGzcuL-i6qH79Q2XrOLeF5T_NLQVZRBlGWlahkHwq6Sc9oIYfnhlegAZvEGIx7H7WjLoo_mzusrbggXNWmVq9zazDTAC3fUvWMWxJMxqO014GNSiUPb8ao",
+    imageUrl: "https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=800&h=1000&fit=crop&q=80",
   },
   {
     name: "Japanese",
+    cuisineType: "japanese",
     tagline: "Zen on a plate",
     alt: "A minimalist and elegant editorial shot of Japanese cuisine, featuring a perfectly arranged plate of sashimi with delicate garnishes on a dark ceramic dish.",
     imageUrl:
@@ -17,6 +19,7 @@ const cuisines = [
   },
   {
     name: "Mexican",
+    cuisineType: "mexican",
     tagline: "Bold & Spirited",
     alt: "A vibrant and colorful editorial photograph of gourmet Mexican street tacos served on a rustic wooden board with fresh lime wedges and cilantro.",
     imageUrl:
@@ -24,6 +27,7 @@ const cuisines = [
   },
   {
     name: "Mediterranean",
+    cuisineType: "mediterranean",
     tagline: "Golden Hour Flavors",
     alt: "A sun-drenched editorial shot of a Mediterranean platter featuring fresh hummus, olives, roasted vegetables, and warm pita bread.",
     imageUrl:
@@ -42,19 +46,20 @@ export function PopularCuisines() {
             </span>
             <h2 className="font-heading text-headline mt-2">Explore by Cuisine</h2>
           </div>
-          <a
-            href="#"
+          <Link
+            href="/explore"
             className="text-primary text-label font-semibold flex items-center gap-1 mt-4 md:mt-0 hover:underline"
           >
             View All Cuisines
             <span className="material-symbols-outlined">arrow_forward</span>
-          </a>
+          </Link>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           {cuisines.map((cuisine) => (
-            <div
+            <Link
               key={cuisine.name}
-              className="relative group cursor-pointer overflow-hidden rounded-2xl aspect-3/4"
+              href={`/explore?cuisineType=${cuisine.cuisineType}`}
+              className="relative group cursor-pointer overflow-hidden rounded-2xl aspect-3/4 block"
             >
               <Image
                 src={cuisine.imageUrl}
@@ -70,7 +75,7 @@ export function PopularCuisines() {
                 </h3>
                 <p className="text-white/80 text-caption">{cuisine.tagline}</p>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>
