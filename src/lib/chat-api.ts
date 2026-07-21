@@ -23,15 +23,12 @@ export interface StreamChatInput {
 export async function* streamChat(
   input: StreamChatInput
 ): AsyncGenerator<ChatStreamEvent> {
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/api/ai/chat/stream`,
-    {
-      method: "POST",
-      credentials: "include",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(input),
-    }
-  );
+  const response = await fetch("/api/ai/chat/stream", {
+    method: "POST",
+    credentials: "include",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(input),
+  });
 
   if (!response.ok || !response.body) {
     throw new Error("Could not reach the chat assistant. Please try again.");

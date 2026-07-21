@@ -17,8 +17,19 @@ assistant, and manage their own recipes.
 
 ## Backend
 
-Separate Express backend at `NEXT_PUBLIC_API_URL` (default
-`http://localhost:5000`). All API responses follow:
+Separate Express backend, set via `BACKEND_ORIGIN` (default
+`http://localhost:5000`; production defaults to the deployed Render URL if
+unset). The frontend and backend live on different domains in production
+(Vercel + Render), so the browser never calls the backend directly — that
+would make the session cookie third-party, which Chrome Incognito already
+blocks. Instead, `next.config.ts` rewrites `/api/:path*` to
+`${BACKEND_ORIGIN}/api/:path*`, and browser-side code (`src/lib/api.ts`,
+`src/lib/auth-client.ts`, `src/lib/chat-api.ts`) calls the relative `/api/*`
+path so requests are same-origin from the browser's perspective. Server-side
+code (Server Components) calls `BACKEND_ORIGIN` directly, since a relative
+URL can't resolve there and there's no browser cookie jar to protect.
+
+All API responses follow:
 
 ```ts
 { success: boolean, data?: T, error?: string }

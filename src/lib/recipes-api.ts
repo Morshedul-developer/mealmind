@@ -133,7 +133,7 @@ export const fetchRecipeDetail = cache(
       // (e.g. the backend is down), which Next.js then renders with no
       // useful information at all. Re-wrap with a real message.
       throw new Error(
-        `Could not reach the recipe service at ${process.env.NEXT_PUBLIC_API_URL}. Is the backend running?`,
+        "Could not reach the recipe service. Is the backend running?",
         { cause: error }
       );
     }
