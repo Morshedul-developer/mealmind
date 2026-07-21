@@ -61,8 +61,10 @@ export function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 w-full z-50 bg-cream/90 backdrop-blur-md transition-shadow ${
-        scrolled ? "shadow-[0px_4px_20px_rgba(34,32,29,0.06)]" : ""
+      className={`fixed top-0 w-full z-50 border-b transition-colors duration-300 ${
+        scrolled
+          ? "bg-cream/80 backdrop-blur-md border-border"
+          : "bg-transparent border-transparent"
       }`}
     >
       <nav className="flex justify-between items-center h-20 px-6 max-w-7xl mx-auto">
