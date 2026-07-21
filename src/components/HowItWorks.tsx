@@ -13,7 +13,7 @@ const steps = [
   },
   {
     icon: "soup_kitchen",
-    iconBg: "bg-cream-alt text-charcoal",
+    iconBg: "bg-charcoal/10 text-charcoal",
     title: "3. Cook & Enjoy",
     description: "Follow step-by-step instructions designed for chefs of every level.",
   },
