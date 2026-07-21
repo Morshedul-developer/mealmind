@@ -35,23 +35,23 @@ const team = [
   {
     name: "Julianne Vance",
     role: "Founder & Executive Food Stylist",
-    alt: "Portrait of Julianne Vance, a chef in a white chef's coat in a bright, upscale restaurant kitchen.",
+    alt: "Portrait of Julianne Vance in warm natural light.",
     imageUrl:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuAGqI-2spvsv9c3ACkGWzO17ehdD0sUmo7XQ9v9tEC_JSO48moBsK1LNy2V8UEQLSn_jgbTUG4CUEYYaNH7r1gfkopliXBdUXhQupazzUb0wfQZw_eIZ_4K3TKWlH5mEcb-vIYrtdIy2pR3WTmLZeKgj5yXVBYAOdkHA0gyC0PHmEsSdE9ANe0lNVZKAwn9jR6MEMpI3g9baUNLFzsIlwIRURb_XMTS49cunwuz-2zcCT-i5OHmxzgElbOaAcGQfcbEls4jN3c-5Gc",
+      "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=800&h=800&fit=crop&q=80",
   },
   {
     name: "Marcus Thorne",
     role: "Head of Culinary AI",
-    alt: "Portrait of Marcus Thorne in a sleek, minimalist kitchen setting holding a digital tablet.",
+    alt: "Portrait of Marcus Thorne in a modern office setting.",
     imageUrl:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuCb_MFmhLVMdvqfztjbroS3YPU8EgjhQvmThIkbyJzMIbpjnW3NM64n2yS2h0WZk39KO-kQm8eJNegPd2hgkyRKk1XBluH37FWepCu8EwuQFpkxTa4FPHQm8EmrHG6SPMbjuFZ_89_43I3wrMojuoZYbJIGlbGcOAXXcCgExDrJMVDlXvHg3g-gI7YKr3iSlBekt1TunhrcRE5F47tF38zkaB9EsGtl4Qjh_Qp9ZJWKo0-NhQIkUwxMF1zLCnBr08KSrfNLQoQkO0g",
+      "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=800&h=800&fit=crop&q=80",
   },
   {
     name: "Sarah Chen",
     role: "Sustainability Lead",
-    alt: "Portrait of Sarah Chen in an urban kitchen garden holding fresh vegetables.",
+    alt: "Portrait of Sarah Chen.",
     imageUrl:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuAAgsyHQbcAfXmWxP6i1m_2dyJOH7EP_pekT1nIAPhDnVMGC5BN8x4ReTuHxJYH76No4CcHW8dls8JA1AKFkijX7zL46KM287ZAMkHxkARyftfuF7kaubf4depz39nfwr5L01mn29NPbwSc9cJG_cwGqX5CFu0ex6c2uT9EdIOg4c90MozsfOVl_cGSm-s8eYP1jMx3Gxzn6kbxetwBxjXrqF_jxnvzibbtWsbtzLwkIY80VcLXwidFzsE0-7DlX_S8cn9uHp6p9M4",
+      "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=800&h=800&fit=crop&q=80",
   },
 ];
 
@@ -86,16 +86,16 @@ export default function AboutPage() {
               </div>
             </div>
             <div className="relative">
-              <div className="relative aspect-4/5 rounded-2xl overflow-hidden shadow-[0px_4px_20px_rgba(34,32,29,0.06)]">
+              <div className="relative aspect-4/3 rounded-2xl overflow-hidden shadow-[0px_4px_20px_rgba(34,32,29,0.06)]">
                 <Image
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuCojA5jQLTcyIsWCSV4MtWxOjH2gPaK72kVVTz6BpvwAKgz_51qdSI-GzH_Lr7BOjr9itVBcgIS4EwPOWmMZlu_jHFKt8bOBeriae2MtrpV-p0GmAh_Cz2lC5d8AXM2Soe7r1xBHvQFI4XtEFzn5C5uqBlMr29OO0zw9ctTxDBagWIcWeYBqqs37foPsGA9OvPmenLLvMYTZgFPBsD6rio2Vx9e0p0_Fz_Jcg02kr5XqmyuHSRgHNRmuz-yiOp_fQnUqNz_vnj9lPY"
-                  alt="A chef prepping fresh herbs in a sun-drenched modern minimalist kitchen with marble countertops and warm terracotta and olive tones."
+                  src="https://images.unsplash.com/photo-1556909212-d5b604d0c90d?w=1000&h=1250&fit=crop&q=80"
+                  alt="A sun-drenched, modern minimalist kitchen with white marble countertops and warm terracotta-colored cookware on the stove."
                   fill
                   sizes="(min-width: 768px) 50vw, 100vw"
                   className="object-cover"
                 />
               </div>
-              <div className="hidden lg:block absolute -bottom-6 -left-6 bg-white p-6 rounded-2xl shadow-[0px_4px_20px_rgba(34,32,29,0.06)] max-w-[240px]">
+              <div className="hidden lg:block absolute -bottom-6 -left-6 bg-white p-6 rounded-2xl shadow-[0px_4px_20px_rgba(34,32,29,0.06)] max-w-60">
                 <p className="font-heading italic text-headline-sm text-secondary">
                   &ldquo;Good food is a human right, not a luxury.&rdquo;
                 </p>
@@ -158,7 +158,7 @@ export default function AboutPage() {
                       alt={member.alt}
                       fill
                       sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                      className="object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                      className="object-cover transition-all duration-500 [@media(hover:hover)]:grayscale [@media(hover:hover)]:group-hover:grayscale-0"
                     />
                   </div>
                   <h4 className="text-title font-semibold">{member.name}</h4>
