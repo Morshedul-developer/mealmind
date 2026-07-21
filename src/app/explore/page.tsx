@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense, useMemo, useState } from "react";
+import { Suspense, useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { useQuery } from "@tanstack/react-query";
 import { Navbar } from "@/components/layout/Navbar";
@@ -93,6 +93,7 @@ export default function ExplorePage() {
 function ExploreContent() {
   const searchParams = useSearchParams();
   const [search, setSearch] = useState("");
+  const [debouncedSearch, setDebouncedSearch] = useState("");
   const [cuisine, setCuisine] = useState<CuisineType | "all">(() => {
     const param = searchParams.get("cuisineType");
     return isCuisineType(param) ? param : "all";
@@ -105,10 +106,21 @@ function ExploreContent() {
   const [prepTimeRange, setPrepTimeRange] = useState<PrepTimeRange>("all");
   const [minRating, setMinRating] = useState<"all" | "4" | "4.5">("all");
 
+  // Debounce the search box: only commit to debouncedSearch (and thus the
+  // query key) 400ms after the user stops typing, so rapid keystrokes don't
+  // each trigger their own fetch.
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      setDebouncedSearch(search);
+      setPage(1);
+    }, 400);
+    return () => clearTimeout(timeoutId);
+  }, [search]);
+
   const queryParams: RecipesQuery = useMemo(() => {
     const prepTime = prepTimeRange === "all" ? undefined : prepTimeRangeToMinutes[prepTimeRange];
     return {
-      search: search.trim() || undefined,
+      search: debouncedSearch.trim() || undefined,
       cuisineType: cuisine === "all" ? undefined : cuisine,
       dietType: diet === "all" ? undefined : diet,
       difficulty: difficulty === "all" ? undefined : difficultyToApi[difficulty],
@@ -118,7 +130,7 @@ function ExploreContent() {
       sort,
       page,
     };
-  }, [search, cuisine, diet, difficulty, prepTimeRange, minRating, sort, page]);
+  }, [debouncedSearch, cuisine, diet, difficulty, prepTimeRange, minRating, sort, page]);
 
   const { data, isLoading, isError, error } = useQuery({
     queryKey: ["recipes", queryParams],
@@ -146,10 +158,7 @@ function ExploreContent() {
           <input
             type="text"
             value={search}
-            onChange={(event) => {
-              setSearch(event.target.value);
-              setPage(1);
-            }}
+            onChange={(event) => setSearch(event.target.value)}
             placeholder="Search recipes..."
             className="w-full bg-white border border-border rounded-lg pl-12 pr-4 py-3 text-charcoal focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
           />
