@@ -58,7 +58,13 @@ export default function LoginPage() {
     setFormError(null);
     setIsGoogleSubmitting(true);
     try {
-      const { error } = await signIn.social({ provider: "google", callbackURL: "/" });
+      const { error } = await signIn.social({
+        provider: "google",
+        // Google OAuth leaves this page entirely and lands back on the
+        // backend directly, so there's no browser "current page" left to
+        // resolve a relative callbackURL against — it must be absolute.
+        callbackURL: window.location.origin,
+      });
       if (error) setFormError(error.message ?? "Could not continue with Google.");
     } catch (error) {
       setFormError(getRequestErrorMessage(error, "Could not continue with Google."));
