@@ -38,6 +38,8 @@ const dietOptions: DietType[] = [
 
 const difficultyOptions: Difficulty[] = ["easy", "medium", "hard"];
 
+const PAGE_SIZE = 8;
+
 type PrepTimeRange = "all" | "under30" | "30to60" | "over60";
 
 const prepTimeRangeToMinutes: Record<
@@ -70,7 +72,7 @@ function ExploreLoadingFallback() {
   return (
     <main className="pt-32 pb-16 px-6 max-w-7xl mx-auto min-h-screen">
       <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {Array.from({ length: 8 }).map((_, index) => (
+        {Array.from({ length: PAGE_SIZE }).map((_, index) => (
           <RecipeCardSkeleton key={index} />
         ))}
       </section>
@@ -129,6 +131,7 @@ function ExploreContent() {
       minRating: minRating === "all" ? undefined : Number(minRating),
       sort,
       page,
+      limit: PAGE_SIZE,
     };
   }, [debouncedSearch, cuisine, diet, difficulty, prepTimeRange, minRating, sort, page]);
 
@@ -328,7 +331,7 @@ function ExploreContent() {
 
       {isLoading ? (
         <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {Array.from({ length: 8 }).map((_, index) => (
+          {Array.from({ length: PAGE_SIZE }).map((_, index) => (
             <RecipeCardSkeleton key={index} />
           ))}
         </section>
