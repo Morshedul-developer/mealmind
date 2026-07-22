@@ -48,9 +48,15 @@ function mapApiRecipe(raw: RecipeApiPayload): Recipe {
   };
 }
 
+export interface RatingBreakdownEntry {
+  rating: number;
+  count: number;
+}
+
 export interface RecipeDetailResult {
   recipe: Recipe;
   related: Recipe[];
+  ratingBreakdown: RatingBreakdownEntry[];
 }
 
 export async function fetchMyRecipes(): Promise<Recipe[]> {
@@ -111,15 +117,21 @@ export const fetchRecipeDetail = cache(
     try {
       const response = await api.get<{
         success: boolean;
-        data?: { recipe: RecipeApiPayload; related?: RecipeApiPayload[] };
+        data?: {
+          recipe: RecipeApiPayload;
+          related?: RecipeApiPayload[];
+          ratingBreakdown?: RatingBreakdownEntry[];
+        };
       }>(`/api/recipes/${id}`);
 
       if (!response.data.success || !response.data.data) return null;
 
-      const { recipe, related } = response.data.data;
+      const { recipe, related, ratingBreakdown } = response.data.data;
       return {
         recipe: mapApiRecipe(recipe),
         related: (related ?? []).map(mapApiRecipe),
+        ratingBreakdown:
+          ratingBreakdown ?? [5, 4, 3, 2, 1].map((rating) => ({ rating, count: 0 })),
       };
     } catch (error) {
       // A response from the server (404, validation error, etc.) means the

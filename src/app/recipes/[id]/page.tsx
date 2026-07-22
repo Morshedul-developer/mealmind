@@ -8,6 +8,7 @@ import { RecipeHero } from "@/components/recipe/RecipeHero";
 import { IngredientChecklist } from "@/components/recipe/IngredientChecklist";
 import { InstructionSteps } from "@/components/recipe/InstructionSteps";
 import { StarRating } from "@/components/recipe/StarRating";
+import { RatingBreakdownChart } from "@/components/recipe/RatingBreakdownChart";
 import { difficultyLabels } from "@/lib/recipe-labels";
 import { fetchRecipeDetail } from "@/lib/recipes-api";
 import type { Recipe } from "@/types/recipe";
@@ -61,7 +62,7 @@ export default async function RecipeDetailsPage({ params }: Props) {
     notFound();
   }
 
-  const { recipe, related } = result;
+  const { recipe, related, ratingBreakdown } = result;
   const stats = buildStats(recipe);
 
   return (
@@ -131,7 +132,11 @@ export default async function RecipeDetailsPage({ params }: Props) {
                     : "No ratings yet"}
                 </span>
               </div>
-              {recipe.ratingCount === 0 && (
+              {recipe.ratingCount > 0 ? (
+                <div className="w-full min-w-0 md:pt-1">
+                  <RatingBreakdownChart data={ratingBreakdown} />
+                </div>
+              ) : (
                 <p className="text-charcoal-muted md:pt-2">
                   Be the first to rate this recipe once you&apos;ve tried it.
                 </p>
