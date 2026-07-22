@@ -188,7 +188,7 @@ export default function LoginPage() {
                 type="button"
                 onClick={handleGoogle}
                 disabled={isGoogleSubmitting}
-                className="w-full bg-cream border border-border text-charcoal text-title font-semibold py-3 rounded-full flex items-center justify-center gap-2 hover:bg-cream-alt transition-all duration-200 active:scale-[0.98] disabled:opacity-60"
+                className="w-full bg-cream border border-border text-charcoal text-label font-semibold py-4 rounded-full flex items-center justify-center gap-3 hover:bg-cream-alt transition-colors disabled:opacity-60"
               >
                 <GoogleIcon />
                 {isGoogleSubmitting ? "Connecting..." : "Continue with Google"}
