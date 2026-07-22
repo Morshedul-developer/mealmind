@@ -24,7 +24,7 @@ export function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section className="py-16 bg-white">
+    <section id="faq" className="py-16 bg-white scroll-mt-24">
       <div className="max-w-3xl mx-auto px-6">
         <h2 className="font-heading text-headline text-center mb-16">
           Kitchen Queries
