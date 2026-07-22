@@ -28,7 +28,7 @@ export function ClickableStarRating({
             onMouseEnter={() => setHoverValue(star)}
             onClick={() => onChange(star)}
             aria-label={`Rate ${star} star${star === 1 ? "" : "s"}`}
-            className="active:scale-95 transition-transform"
+            className="active:scale-95 transition-transform p-2 -m-2"
           >
             <span
               className={`material-symbols-outlined text-[28px] ${

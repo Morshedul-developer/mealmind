@@ -235,7 +235,7 @@ function ExploreContent() {
                 setSort(event.target.value as SortOption);
                 setPage(1);
               }}
-              className="appearance-none bg-transparent text-label text-primary font-semibold cursor-pointer hover:underline pr-6"
+              className="appearance-none bg-transparent text-label text-primary font-semibold cursor-pointer hover:underline pr-6 py-2"
             >
               <option value="rating">Highest Rated</option>
               <option value="newest">Newest First</option>

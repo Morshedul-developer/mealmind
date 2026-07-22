@@ -47,7 +47,7 @@ export function FeaturedRecipes() {
       </div>
       <div
         ref={carouselRef}
-        className="recipe-carousel flex gap-6 overflow-x-auto px-[calc((100vw-1280px)/2+24px)] snap-x snap-mandatory"
+        className="recipe-carousel flex gap-6 overflow-x-auto px-[max(24px,calc((100vw-1280px)/2+24px))] [scroll-padding-inline:max(24px,calc((100vw-1280px)/2+24px))] snap-x snap-mandatory"
       >
         {isError ? (
           <p className="text-charcoal-muted">Could not load featured recipes.</p>

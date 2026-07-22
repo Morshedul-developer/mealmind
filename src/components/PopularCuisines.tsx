@@ -69,8 +69,8 @@ export function PopularCuisines() {
                 className="object-cover transition-transform duration-500 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-              <div className="absolute bottom-4 left-4">
-                <h3 className="text-white text-title font-semibold">
+              <div className="absolute bottom-4 left-4 right-4">
+                <h3 className="text-white text-title font-semibold break-words">
                   {cuisine.name}
                 </h3>
                 <p className="text-white/80 text-caption">{cuisine.tagline}</p>

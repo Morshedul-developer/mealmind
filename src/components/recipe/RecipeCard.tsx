@@ -33,7 +33,7 @@ export function RecipeCard({ recipe }: { recipe: Recipe }) {
             onClick={() => setIsFavorited((prev) => !prev)}
             aria-label={isFavorited ? "Remove from favorites" : "Add to favorites"}
             aria-pressed={isFavorited}
-            className={`material-symbols-outlined shrink-0 cursor-pointer ${
+            className={`material-symbols-outlined shrink-0 cursor-pointer p-2 -m-2 ${
               isFavorited ? "text-primary" : "text-charcoal-muted"
             }`}
             style={{ fontVariationSettings: isFavorited ? "'FILL' 1" : "'FILL' 0" }}

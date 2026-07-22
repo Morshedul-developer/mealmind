@@ -90,7 +90,7 @@ export default function ManageRecipesPage() {
   return (
     <>
       <Navbar />
-      <main className="pt-32 pb-16 px-6 max-w-7xl mx-auto min-h-screen">
+      <main className="pt-32 pb-16 px-6 max-w-7xl mx-auto min-h-screen w-full min-w-0">
         <div className="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
           <div>
             <h1 className="font-heading text-display-mobile md:text-display tracking-tight">
