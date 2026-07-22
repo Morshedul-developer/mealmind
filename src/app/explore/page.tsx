@@ -10,6 +10,7 @@ import { RecipeCardSkeleton } from "@/components/recipe/RecipeCardSkeleton";
 import { fetchRecipes, type RecipesQuery } from "@/lib/recipes-api";
 import { getApiErrorMessage } from "@/lib/errors";
 import { difficultyToApi } from "@/lib/recipe-format";
+import { getDietLabel } from "@/lib/recipe-labels";
 import type { CuisineType, DietType, Difficulty } from "@/types/recipe";
 
 const cuisineOptions: CuisineType[] = [
@@ -18,7 +19,9 @@ const cuisineOptions: CuisineType[] = [
   "indian",
   "chinese",
   "japanese",
+  "korean",
   "thai",
+  "vietnamese",
   "french",
   "mediterranean",
   "american",
@@ -29,6 +32,7 @@ const cuisineOptions: CuisineType[] = [
 const dietOptions: DietType[] = [
   "vegan",
   "vegetarian",
+  "non-veg",
   "keto",
   "paleo",
   "gluten-free",
@@ -202,7 +206,7 @@ function ExploreContent() {
               <option value="all">Diet Type: All</option>
               {dietOptions.map((option) => (
                 <option key={option} value={option}>
-                  {capitalize(option)}
+                  {getDietLabel(option)}
                 </option>
               ))}
             </select>

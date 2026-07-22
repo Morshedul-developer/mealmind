@@ -3,6 +3,7 @@ import type { Recipe } from "@/types/recipe";
 export const dietLabels: Record<Recipe["dietType"], string> = {
   vegan: "Vegan",
   vegetarian: "Vegetarian",
+  "non-veg": "Non-Veg",
   keto: "Keto",
   paleo: "Paleo",
   "gluten-free": "Gluten-Free",

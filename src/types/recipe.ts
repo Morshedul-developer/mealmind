@@ -9,11 +9,14 @@ export type CuisineType =
   | "mediterranean"
   | "american"
   | "bengali"
+  | "korean"
+  | "vietnamese"
   | "other";
 
 export type DietType =
   | "vegan"
   | "vegetarian"
+  | "non-veg"
   | "keto"
   | "paleo"
   | "gluten-free"

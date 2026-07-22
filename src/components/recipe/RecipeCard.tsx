@@ -41,6 +41,9 @@ export function RecipeCard({ recipe }: { recipe: Recipe }) {
             favorite
           </button>
         </div>
+        <p className="text-caption text-charcoal-muted line-clamp-2 mb-3">
+          {recipe.shortDescription}
+        </p>
         <div className="flex gap-2 mb-4">
           <span className="bg-secondary-light text-secondary text-caption px-2 py-0.5 rounded-full font-medium">
             {getDietLabel(recipe.dietType)}
@@ -65,7 +68,7 @@ export function RecipeCard({ recipe }: { recipe: Recipe }) {
             href={`/recipes/${recipe._id}`}
             className="text-primary text-label font-semibold flex items-center hover:gap-1 transition-all"
           >
-            View
+            View Details
             <span className="material-symbols-outlined text-[18px]">
               chevron_right
             </span>
