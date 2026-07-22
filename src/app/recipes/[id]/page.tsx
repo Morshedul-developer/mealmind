@@ -9,6 +9,7 @@ import { IngredientChecklist } from "@/components/recipe/IngredientChecklist";
 import { InstructionSteps } from "@/components/recipe/InstructionSteps";
 import { StarRating } from "@/components/recipe/StarRating";
 import { RatingBreakdownChart } from "@/components/recipe/RatingBreakdownChart";
+import { ReviewSection } from "@/components/recipe/ReviewSection";
 import { difficultyLabels } from "@/lib/recipe-labels";
 import { fetchRecipeDetail } from "@/lib/recipes-api";
 import type { Recipe } from "@/types/recipe";
@@ -142,6 +143,8 @@ export default async function RecipeDetailsPage({ params }: Props) {
                 </p>
               )}
             </div>
+
+            <ReviewSection recipeId={recipe._id} />
           </section>
 
           {related.length > 0 && (
